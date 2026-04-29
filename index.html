@@ -25,14 +25,13 @@
       let dlugosc = document.getElementById("minuty").value.length;
       let guzik = document.getElementById("sprawdz");
       guzik.addEventListener("click", sprawdzWolnosc);
-      guzik.addEventListener("click", SprawdzDlugosc);
-      function SprawdzDlugosc() {
-        if (document.getElementById("minuty").length < 3) {
-          alert("Proszę wpisać liczbę minut.");
-        }
-      }
       function sprawdzWolnosc() {
-        if (document.getElementById("minuty").value >= 55) {
+        if (document.getElementById("minuty").value > 59) {
+          document.getElementById("wynik").innerHTML =
+            "Wpisz prawidłową liczbę minut (0-59).";
+          document.getElementById("wynik").style.color = "black";
+          document.getElementById("wynik").style.fontWeight = "bold";
+        } else if (document.getElementById("minuty").value >= 55) {
           document.getElementById("wynik").innerHTML =
             "Czas rozpocząć popołudnie.";
           document.getElementById("wynik").style.color = "green";
