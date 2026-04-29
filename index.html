@@ -1,0 +1,54 @@
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sprawdzanie wolności</title>
+    <style>
+      div {
+        display: flex;
+      }
+      input {
+        width: 50px;
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Czy mogę już iść do domu?</h1>
+    <div>
+      <p>Godzina: 14:</p>
+      <input type="text" id="minuty" min="0" max="59" maxlength="2" />
+    </div>
+    <button id="sprawdz">Sprawdź</button>
+    <p id="wynik"></p>
+    <script>
+      let dlugosc = document.getElementById("minuty").value.length;
+      let guzik = document.getElementById("sprawdz");
+      guzik.addEventListener("click", sprawdzWolnosc);
+      guzik.addEventListener("click", SprawdzDlugosc);
+      function SprawdzDlugosc() {
+        if (document.getElementById("minuty").length < 3) {
+          alert("Proszę wpisać liczbę minut.");
+        }
+      }
+      function sprawdzWolnosc() {
+        if (document.getElementById("minuty").value >= 55) {
+          document.getElementById("wynik").innerHTML =
+            "Czas rozpocząć popołudnie.";
+          document.getElementById("wynik").style.color = "green";
+          document.getElementById("wynik").style.fontWeight = "normal";
+        } else if (document.getElementById("minuty").value < 55) {
+          document.getElementById("wynik").innerHTML =
+            "Jeszcze musimy się pouczyć.";
+          document.getElementById("wynik").style.color = "red";
+          document.getElementById("wynik").style.fontWeight = "normal";
+        } else {
+          document.getElementById("wynik").innerHTML =
+            "Wpisz prawidłową liczbę minut.";
+          document.getElementById("wynik").style.color = "black";
+          document.getElementById("wynik").style.fontWeight = "bold";
+        }
+      }
+    </script>
+  </body>
+</html>
